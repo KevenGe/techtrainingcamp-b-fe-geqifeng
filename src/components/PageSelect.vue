@@ -1,8 +1,8 @@
 <template>
     <div class="pages">
-        <div @click="toPriorPage" :class="[currentPage === 1?'button-disable':'']"><img src="../assets/arrow_left.svg"
+        <div @click="toPriorPage" :class="[value === 1?'button-disable':'']"><img src="../assets/arrow_left.svg"
                                                                                         alt="左"><span>上一页</span></div>
-        <div>第{{ currentPage }}页</div>
+        <div>第{{ value }}页</div>
         <div @click="toNextPage"><img src="../assets/arrow_right.svg" alt="右"><span>下一页</span></div>
     </div>
 </template>
@@ -16,24 +16,28 @@
             }
         },
         data: function () {
-            return {
-                currentPage: this.value
-            }
+            return {}
         },
-        watch: {
-            currentPage: function () {
-                this.$emit("input", this.currentPage);
-            }
-        },
+        watch: {},
         methods: {
+
+            /**
+             * @description 转到下一页
+             */
             toNextPage: function () {
-                this.currentPage += 1;
+                // this.value += 1;
+                this.$emit("input", Number(this.value) + 1);
             },
+
+            /**
+             * @description 转到上一页
+             */
             toPriorPage: function () {
-                if (this.currentPage !== 1) {
-                    this.currentPage -= 1;
+                if (this.value !== 1) {
+                    this.$emit("input", Number(this.value) - 1);
                 }
             }
+
         }
     }
 </script>

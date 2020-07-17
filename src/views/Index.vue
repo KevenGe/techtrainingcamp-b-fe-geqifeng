@@ -9,6 +9,7 @@
             <icon></icon>
             <search @search="search"></search>
         </div>
+
         <foot style="position: fixed;bottom: 0"></foot>
     </div>
 </template>
@@ -38,7 +39,7 @@
                 console.log(searchText);
                 this.searchText = searchText;
                 console.log(this.searchText);
-                this.$router.push({path: 'result', query: {searchText: searchText, currentPage: 1}})
+                this.$router.push({path: "result", "query": {searchText: searchText, currentPage: 1}})
             }
         }
     }

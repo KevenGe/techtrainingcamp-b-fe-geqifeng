@@ -10,6 +10,7 @@ export default new Vuex.Store({
         showCreatedTime: true,
         showTags: true,
         showDescription: true,
+        showAuthor: true,
 
         darkMode: false,
         showSearchCandidate: true,

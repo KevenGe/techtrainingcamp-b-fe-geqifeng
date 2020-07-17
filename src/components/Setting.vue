@@ -1,15 +1,18 @@
 <template>
     <div>
         <div @click="handleSettingShow" :class="iconClass">
-            <img src="../assets/setting.svg" alt="设置">
+
+            <template v-if="white">
+                <img src="../assets/setting-white.svg" alt="设置">
+            </template>
+            <template v-else>
+                <img src="../assets/setting.svg" alt="设置">
+            </template>
         </div>
         <div :class="settingStyle" id="setting">
             <div class="setting-header">
                 <div @click="handleSettingShow">
                     &lt; CLOSE
-                </div>
-                <div>
-                    设置
                 </div>
             </div>
 
@@ -19,17 +22,9 @@
                     <div>浏览设置</div>
                     <div>
                         <div>
-                            <div @click="test">
-                                简洁模式
-                            </div>
+                            <div>显示来源（作者）</div>
                             <div>
-                                <sliding-block v-model="$store.state.simpleMode"></sliding-block>
-                            </div>
-                        </div>
-                        <div>
-                            <div>显示评论数量</div>
-                            <div>
-                                <sliding-block v-model="$store.state.showCommentNumber"></sliding-block>
+                                <sliding-block v-model="$store.state.showAuthor"></sliding-block>
                             </div>
                         </div>
                         <div>
@@ -63,42 +58,10 @@
                     <div>
                         <div>
                             <div>
-                                黑暗模式
-                            </div>
-                            <div>
-                                <sliding-block v-model="$store.state.darkMode"></sliding-block>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
                                 显示搜索候选
                             </div>
                             <div>
                                 <sliding-block v-model="$store.state.showSearchCandidate"></sliding-block>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                语言
-                            </div>
-                            <div>
-                                <sliding-block v-model="$store.state.languageIsChinese"></sliding-block>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                搜索展示每页的数量
-                            </div>
-                            <div>
-                                <!--                                <sliding-block v-model="$store.state.numOfPage"></sliding-block>-->
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                打开SWIPER
-                            </div>
-                            <div>
-                                <sliding-block v-model="$store.state.showSwiper"></sliding-block>
                             </div>
                         </div>
                         <div>
@@ -123,7 +86,9 @@
         name: "Setting",
         components: {SlidingBlock},
         props: {
-            SlidingBlock
+            white:{
+                type:Boolean,
+            }
         },
         data: function () {
             return {
@@ -178,11 +143,8 @@
     .setting-icon {
         display: inline-block;
         height: 10vh;
-        margin: 1vh;
 
         img {
-            margin: 10px;
-
             height: 5vh;
             transition: 1s;
             transform: rotateZ(0deg);
@@ -191,7 +153,6 @@
 
         &-half {
             img {
-                margin: 10px;
                 height: 5vh;
                 transition: 1s;
                 transform: rotateZ(180deg);
@@ -201,7 +162,6 @@
 
         &-all {
             img {
-                margin: 10px;
                 height: 5vh;
                 transition: 1s;
                 transform: rotateZ(0deg);
@@ -214,14 +174,13 @@
         height: 100vh;
         width: 100vw;
         background-color: white;
-        /*opacity: 50%;*/
 
         position: absolute;
         top: 0;
-        /*left: -100%;*/
+        left:0;
 
         transition: 1s;
-        transform: translateX(-100%);
+        transform: translateX(-120%);
 
         z-index: 99;
     }
@@ -231,10 +190,8 @@
         width: 100vw;
 
         background-color: white;
-        /*opacity: 100%;*/
         position: absolute;
         top: 0;
-        /*left: -100%;*/
 
         transition: 1s;
         transform: translateX(0);

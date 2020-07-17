@@ -1,23 +1,24 @@
 <template>
     <div>
-
-        <div id="top" style="height:10px;margin-bottom: 30px"></div>
-        <search @search="handleSearch" :search-text-initial="searchText" top></search>
-        <ResultList style="margin-top: 40px"
-                    :searchText="searchText"
-                    :currentPage="currentPage"
-                    :num-of-page="this.$store.state.numOfPage"
-                    :unlimited-scroll="this.$store.state.unlimitedScroll"></ResultList>
+        <search @search="handleSearch"
+                :search-text-initial="searchText"
+                top
+                fix></search>
+        <ResultLists style="margin-top: 40px"
+                     :searchText="searchText"
+                     v-model="currentPage"
+                     :num-of-page="this.$store.state.numOfPage"
+                     :unlimited-scroll="this.$store.state.unlimitedScroll"></ResultLists>
         <PageSelect v-model="currentPage"></PageSelect>
         <foot></foot>
-        <egg style="z-index: 999"></egg>
+        <egg style="z-index: 999" v-model="eggShow">{{ eggText }}</egg>
     </div>
 </template>
 
 <script>
     // import axios from "axios"
     import Search from "../components/Search";
-    import ResultList from "../components/ResultList";
+    import ResultLists from "../components/ResultLists";
     import PageSelect from "../components/PageSelect";
     import Foot from "../components/Foot";
     import Egg from "../components/Egg";
@@ -27,32 +28,46 @@
         components: {
             PageSelect,
             Search,
-            ResultList,
+            ResultLists,
             Foot,
             Egg
         },
         data: function () {
             return {
-                searchText: "",
-                currentPage: 1
+                searchText: this.$route.query.searchText,     ///< 搜索的内容
+                currentPage: Number(this.$route.query.currentPage),      ///< 当前的页码
+                eggText:"",
+                eggShow:false
+            }
+        },
+        computed: {
+            unlimitedScroll: function () {
+                return this.$store.state.unlimitedScroll;
             }
         },
         watch: {
             currentPage: function () {
                 console.log(this.currentPage);
-                window.location.href = "#top";
+                this.$router.push({path: "result", query: {searchText: this.searchText, currentPage: this.currentPage}})
             },
             searchText: function () {
-
+                console.log(this.searchText);
+                if(this.searchText === "js"){
+                    this.eggText = "JS这门语言很有用哦！";
+                    this.eggShow = true;
+                }
+            },
+            unlimitedScroll: function () {
+                if (this.unlimitedScroll) {
+                    this.currentPage = 1;
+                }
             }
         },
         mounted: function () {
-            this.searchText = this.$route.query.searchText;
         },
         methods: {
             handleSearch: function (searchText) {
                 this.searchText = searchText;
-                console.log(this.searchText);
                 this.$router.push({path: 'result', query: {searchText: searchText, currentPage: 1}})
             },
         }

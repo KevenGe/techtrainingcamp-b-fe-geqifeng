@@ -11,8 +11,9 @@
                     <div class="title"><a :href="item.link_url">{{ item.title }}</a></div>
                     <div class="description">{{ item.description }}</div>
                     <div class="foot">
-                        <div>{{ $store.state.showCreatedTime ? timeFormat(item.create_time):'' }}</div>
-                        <div v-if="$store.state.showTags">
+                        <div>{{ showAuthor?item.user_name:"" }} - {{ showCreatedTime ? timeFormat(item.create_time):''}}
+                        </div>
+                        <div v-if="showTags">
                             <div v-for="(tag,index) in item.tags" :key="index">{{ tag }}</div>
                         </div>
                     </div>
@@ -39,6 +40,15 @@
             },
             unlimitedScroll: {
                 type: Boolean
+            },
+            showCreatedTime: {
+                type: Boolean
+            },
+            showTags: {
+                type: Boolean
+            },
+            showAuthor: {
+                type: Boolean
             }
         },
         data: function () {
@@ -53,6 +63,11 @@
             },
             currentPage: function () {
                 this.search();
+            },
+            unlimitedScroll:function () {
+                if(this.unlimitedScroll){
+                    this.setOnscrollEvent();
+                }
             }
         },
         mounted: function () {
@@ -60,7 +75,6 @@
             this.setOnscrollEvent();
         },
         methods: {
-
             /**
              * @description 进行查询
              */
@@ -70,11 +84,10 @@
                     .get("https://i.snssdk.com/search/api/study/", {
                         params: {
                             keyword: _this.searchText,
-                            offset: (_this.currentPage - 1) * _this.numOfPage
+                            offset: (_this.currentPage - 1) * 10
                         }
                     })
                     .then(function (response) {
-                        console.log(response);
                         if (response.data.code === 0) {
                             _this.resultList = response.data.data;
                         }
@@ -85,7 +98,7 @@
             },
 
             /**
-             *
+             * 在现有内容上追加内容
              */
             continueSearch: function () {
                 let _this = this;
@@ -97,9 +110,11 @@
                         }
                     })
                     .then(function (response) {
-                        console.log(response);
+                        console.log("continue search");
                         if (response.data.code === 0) {
                             _this.resultList = _this.resultList.concat(response.data.data);
+                            console.log(_this.resultList);
+                            _this.resultList = _this.resultList.slice(0);
                         }
                     })
                     .catch(function (error) {
@@ -168,16 +183,38 @@
              */
             setOnscrollEvent: function () {
                 if (this.unlimitedScroll === true) {
-                    console.log("unlimitedScroll " + this.unlimitedScroll);
+                    // console.log("unlimitedScroll " + this.unlimitedScroll);
                     var _this = this;
+                    // window.onscroll = function () {
+                    //     if (_this.getDocumentTop() > _this.getWindowHeight()) {
+                    //         console.log("aa");
+                    //         _this.continueSearch();
+                    //     }
+                    // }
+
                     window.onscroll = function () {
-                        if (_this.getDocumentTop() > _this.getWindowHeight()) {
-                            console.log("aa");
+                        if(_this.unlimitedScroll === false){
+                            return;
+                        }
+
+                        //htmlHeight 是网页的总高度
+                        var htmlHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+                        //clientHeight是网页在浏览器中的可视高度，
+                        var clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
+                        //scrollTop是浏览器滚动条的top位置，
+                        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+                        if (scrollTop > clientHeight / 2) {
                             _this.continueSearch();
+                            console.log(htmlHeight);
+                            console.log(clientHeight);
+                            console.log(scrollTop);
+                            console.log(window.innerHeight);
                         }
                     }
                 }
             },
+
         }
     }
 </script>
@@ -186,7 +223,6 @@
     .result-list {
         background-color: rgb(230, 230, 230);
         padding-bottom: 7px;
-        margin-top: 40px;
 
         .result-item {
             margin-top: 10px;
