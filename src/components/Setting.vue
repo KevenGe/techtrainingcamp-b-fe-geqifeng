@@ -43,14 +43,6 @@
                                 <sliding-block v-model="$store.state.showTags"></sliding-block>
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                显示概括
-                            </div>
-                            <div>
-                                <sliding-block v-model="$store.state.showDescription"></sliding-block>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="item">
