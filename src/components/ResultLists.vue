@@ -228,7 +228,7 @@
     .top {
         overflow-x: hidden;
         position: relative;
-        width: 100vw;
+        width: 100%;
         height: 230vh;
     }
 
@@ -236,18 +236,21 @@
         transition: 0.5s;
         transform: translateX(0);
         position: absolute;
+        width: 100%;
     }
 
     .hide-left {
         transition: 0.5s;
         transform: translateX(-100%);
         position: absolute;
+        width: 100%;
     }
 
     .hide-right {
         transition: 0.5s;
         transform: translateX(100%);
         position: absolute;
+        width: 100%;
     }
 
 </style>

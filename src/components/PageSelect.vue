@@ -1,9 +1,10 @@
 <template>
     <div class="pages">
         <div @click="toPriorPage" :class="[value === 1?'button-disable':'']"><img src="../assets/arrow_left.svg"
-                                                                                        alt="左"><span>上一页</span></div>
+                                                                                  alt="左"><span>上一页</span></div>
         <div>第{{ value }}页</div>
-        <div @click="toNextPage"><img src="../assets/arrow_right.svg" alt="右"><span>下一页</span></div>
+        <div @click="toNextPage" :class="[$store.state.unlimitedScroll ?'button-disable':'']"><img
+                src="../assets/arrow_right.svg" alt="右"><span>下一页</span></div>
     </div>
 </template>
 
@@ -26,7 +27,9 @@
              */
             toNextPage: function () {
                 // this.value += 1;
-                this.$emit("input", Number(this.value) + 1);
+                if (this.$store.state.unlimitedScroll === false) {
+                    this.$emit("input", Number(this.value) + 1);
+                }
             },
 
             /**

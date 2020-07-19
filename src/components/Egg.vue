@@ -42,7 +42,7 @@
                     _this.eggClass = "egg";
                     setTimeout(function () {
                         _this.eggClass = "egg-hide";
-                    }, 1000)
+                    }, 2000)
                 }, 500)
             }
         }
@@ -56,7 +56,7 @@
         width: 80vw;
         height: 20vh;
         left: 10vw;
-        background-color: #42b983;
+        background-color: #fcbf1e;
         border-radius: 30px;
         box-shadow: 5px 5px 5px gray;
         padding: 10vw;
@@ -82,7 +82,7 @@
         width: 80vw;
         height: 20vh;
         left: 10vw;
-        background-color: #42b983;
+        background-color: #fcbf1e;
         border-radius: 30px;
         box-shadow: 5px 5px 5px gray;
         padding: 10vw;

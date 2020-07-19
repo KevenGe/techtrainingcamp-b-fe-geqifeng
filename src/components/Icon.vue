@@ -46,7 +46,7 @@
     .icon-big {
         display: inline-block;
         font-size: 2rem;
-        background-color: #0000ff;
+        background-color: #0066CC;
         color: white;
         padding: 0.5rem;
         position: relative;
@@ -96,7 +96,7 @@
     .icon-big-top {
         display: inline-block;
         font-size: 2rem;
-        background-color: #0000ff;
+        background-color: #0066CC;
         color: white;
         padding: 0.5rem;
         position: relative;
@@ -146,7 +146,7 @@
     .icon-mini {
         display: inline-block;
         font-size: 2rem;
-        background-color: #0000ff;
+        background-color: #035aa6;
         color: white;
         padding: 0.5rem;
         position: relative;
@@ -196,7 +196,7 @@
     .icon-mini-top {
         display: inline-block;
         font-size: 2rem;
-        background-color: #0000ff;
+        background-color: #035aa6;
         color: white;
         padding: 0.5rem;
         position: relative;

@@ -113,7 +113,6 @@
                         console.log("continue search");
                         if (response.data.code === 0) {
                             _this.resultList = _this.resultList.concat(response.data.data);
-                            console.log(_this.resultList);
                             _this.resultList = _this.resultList.slice(0);
                         }
                     })
@@ -183,14 +182,7 @@
              */
             setOnscrollEvent: function () {
                 if (this.unlimitedScroll === true) {
-                    // console.log("unlimitedScroll " + this.unlimitedScroll);
                     var _this = this;
-                    // window.onscroll = function () {
-                    //     if (_this.getDocumentTop() > _this.getWindowHeight()) {
-                    //         console.log("aa");
-                    //         _this.continueSearch();
-                    //     }
-                    // }
 
                     window.onscroll = function () {
                         if(_this.unlimitedScroll === false){
@@ -198,18 +190,14 @@
                         }
 
                         //htmlHeight 是网页的总高度
-                        var htmlHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+                        // let htmlHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
                         //clientHeight是网页在浏览器中的可视高度，
-                        var clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
+                        let clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
                         //scrollTop是浏览器滚动条的top位置，
-                        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 
                         if (scrollTop > clientHeight / 2) {
                             _this.continueSearch();
-                            console.log(htmlHeight);
-                            console.log(clientHeight);
-                            console.log(scrollTop);
-                            console.log(window.innerHeight);
                         }
                     }
                 }
@@ -251,6 +239,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 color: black;
+                font-size: 1rem;
             }
 
             .foot {
@@ -270,11 +259,11 @@
                         div {
                             float: right;
                             font-size: small;
-                            background-color: blueviolet;
+                            background-color: #40bad5;
                             border-radius: 10px;
                             color: white;
                             padding: 2px 4px 4px;
-                            border: 1px solid gray;
+                            /*border: 1px solid gray;*/
                             margin: 1px;
                         }
                     }

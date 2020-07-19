@@ -14,7 +14,8 @@
                 </label>
             </div>
 
-            <template v-if="searchState===0 || searchState===2 ||searchText !=='' ">
+            <template
+                    v-if="searchState===0 || searchState===2 || searchState===3 || searchState===4 ||searchText !=='' ">
                 <div @click="handleSearch()">搜索一下</div>
             </template>
             <template v-else-if="searchState===1 && searchText ==='' ">
@@ -90,7 +91,6 @@
         watch: {
             searchText: function () {
                 this.getSearchCandidateList();
-                // this.$emit("input", this.searchText);
             },
 
             searchTextInitial: function () {
@@ -174,7 +174,7 @@
             z-index: 9;
             width: 80%;
             height: 38px;
-            background-color: blue;
+            background-color: #035aa6;
             padding: 3px;
             box-sizing: border-box;
             margin: auto;
@@ -231,10 +231,10 @@
     // 主页搜索候选，
     .search-top {
         .searchInput {
-            z-index: 2;
+            z-index: 9;
             width: 100%;
             height: 38px;
-            background-color: blue;
+            background-color: #035aa6;
             padding: 3px;
             box-sizing: border-box;
             margin: auto;
@@ -249,8 +249,6 @@
 
             div {
                 height: 32px;
-                /*margin-bottom: 3px;*/
-                /*margin-top: 3px;*/
                 margin: 0;
                 padding: 0;
 
@@ -271,7 +269,7 @@
 
         .searchCandidate {
             display: block;
-            z-index: 1;
+            z-index: 8;
             background-color: white;
             width: 100vw;
             height: 100vh;
@@ -282,7 +280,7 @@
             right: 0;
 
             transition: 0.5s;
-            opacity: 100%;
+            opacity: 1;
 
             div {
                 margin-top: 40px;
@@ -306,10 +304,10 @@
     // 结果页搜索候选，
     .search-top-2 {
         .searchInput {
-            z-index: 2;
+            z-index: 9;
             width: 100%;
             height: 38px;
-            background-color: blue;
+            background-color: #035aa6;
             padding: 3px;
             box-sizing: border-box;
             margin: auto;
@@ -364,10 +362,10 @@
     // 结果页搜索不带候选，带设置
     .search-top-3 {
         .searchInput {
-            z-index: 2;
+            z-index: 9;
             width: 100%;
             height: 38px;
-            background-color: blue;
+            background-color: #035aa6;
             padding: 3px;
             box-sizing: border-box;
             margin: auto;
@@ -392,7 +390,7 @@
                     width: 10%;
                     height: 100%;
                     float: left;
-                    background-color: blue;
+                    /*background-color: blue;*/
                 }
 
                 &:nth-of-type(2) {
@@ -431,10 +429,10 @@
     // 结果页搜索带候选，带设置
     .search-top-4 {
         .searchInput {
-            z-index: 2;
+            z-index: 9;
             width: 100%;
             height: 38px;
-            background-color: blue;
+            background-color: #035aa6;
             padding: 3px;
             box-sizing: border-box;
             margin: auto;
@@ -459,7 +457,7 @@
                     width: 10%;
                     height: 100%;
                     float: left;
-                    background-color: blue;
+                    /*background-color: blue;*/
                 }
 
                 &:nth-of-type(2) {
@@ -480,7 +478,7 @@
 
         .searchCandidate {
             display: block;
-            z-index: 1;
+            z-index: 8;
             background-color: white;
             width: 100vw;
             height: 100vh;
@@ -491,7 +489,7 @@
             right: 0;
 
             transition: 0.5s;
-            opacity: 100%;
+            opacity: 1;
 
             div {
                 margin-top: 40px;

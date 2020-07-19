@@ -36,8 +36,8 @@
             return {
                 searchText: this.$route.query.searchText,     ///< 搜索的内容
                 currentPage: Number(this.$route.query.currentPage),      ///< 当前的页码
-                eggText:"",
-                eggShow:false
+                eggText: "",
+                eggShow: false
             }
         },
         computed: {
@@ -52,8 +52,14 @@
             },
             searchText: function () {
                 console.log(this.searchText);
-                if(this.searchText === "js"){
+                if (this.searchText === "js") {
                     this.eggText = "JS这门语言很有用哦！";
+                    this.eggShow = true;
+                } else if (this.searchText === "css") {
+                    this.eggText = "CSS可以作出很漂亮的东西";
+                    this.eggShow = true;
+                } else if (this.searchText === "html") {
+                    this.eggText = "HTMl可以很轻松地做出具有一定结构的页面";
                     this.eggShow = true;
                 }
             },

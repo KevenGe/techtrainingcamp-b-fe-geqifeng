@@ -202,7 +202,6 @@
     .setting-header {
         height: 7vh;
         text-align: center;
-        /*background-color: gray;*/
         border-bottom: 1px solid gray;
 
         div {
@@ -210,7 +209,7 @@
             margin: 1vh 4vw;
             line-height: 5vh;
             /*border: 1px solid gray;*/
-            background-color: blue;
+            background-color: #035aa6;
             color: white;
             border-radius: 10px;
             padding-left: 2vw;

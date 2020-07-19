@@ -19,7 +19,7 @@
     .foot {
         width: 100%;
         height: 50px;
-        background-color: gray;
+        background-color: #120136;
         color: white;
         font-size: small;
 
