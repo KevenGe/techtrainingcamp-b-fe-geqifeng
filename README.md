@@ -8,7 +8,7 @@
 
 本项目通过使用VUE框架以及AXIOS来完成，并且本项目只包括源代码，不包括部署之后的代码。
 
-如果需要部署之后的node.js代码，请参考[服务器代码](https://github.com/KevenGe/bytedance-toutiao-serve/tree/master);
+如果需要部署之后的node.js代码，请参考[服务器代码](https://github.com/KevenGe/techtrainingcamp-b-fe-geqifeng-serve);
 
 声明，在本项目中，除去项目中的静态矢量图（齿轮、上翻页、下翻页）之外，所有的内容（包括组件、动画）均为本人代码实现。
 
