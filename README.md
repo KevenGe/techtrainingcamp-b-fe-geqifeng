@@ -37,7 +37,7 @@
 
 ## 项目运行截图
 
-（如果本部分的GIF查看不了，可以先克隆到本地，然后查看）
+（如果本部分的GIF查看不了，可以先克隆到本地，然后查看；或者通过github的[镜像网站](https://hub.fastgit.org/KevenGe/techtrainingcamp-b-fe-geqifeng/)查看本项目，）
 
 默认主页
 
